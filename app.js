@@ -20,36 +20,33 @@ body.onkeydown = function(e){
         moveForward();
     }
     else if (e.keyCode === 37) {
-        if (taxiLocationCounter === 1){
-          taxiLocationCounter=9;
+     moveBackward();
         }
-        moveBackward();
-    }
 
-    displayMessage (createLocactionClass (taxiLocationCounter));
-
+    displayMessage (createLocationClass (taxiLocationCounter));
 }
+
     //var Name = keyCodeName(e.keyCode);
 
 function moveForward() {
-  var currentLocation = createLocactionClass (taxiLocationCounter);
+  var currentLocation = createLocationClass (taxiLocationCounter);
   taxiLocationCounter++
   if(taxiLocationCounter > 9){
     taxiLocationCounter = 1;
   }
-  var newLocation =  createLocactionClass (taxiLocationCounter);
+  var newLocation =  createLocationClass (taxiLocationCounter);
   moveTaxi (currentLocation, newLocation);
 }
 
 
 function moveBackward() {
-  var currentLocation = createLocactionClass (taxiLocationCounter);
-  taxiLocationCounter--;
-  if(taxiLocationCounter === 0){
-    taxiLocationCounter = 9;
-  }
-  var newLocation =  createLocactionClass (taxiLocationCounter);
-  moveTaxi (currentLocation, newLocation);
+ var currentLocation = createLocationClass (taxiLocationCounter);
+ taxiLocationCounter--;
+ if (taxiLocationCounter === 0){
+   taxiLocationCounter = 9;
+ }
+ var newLocation = createLocationClass(taxiLocationCounter);
+ moveTaxi(currentLocation, newLocation);
 }
 
 function createTrafficLightClass(taxiLocationCounter){
@@ -133,7 +130,7 @@ var TrafficLight = function (trafficLightNumber) {
 }
 
 
-function createLocactionClass(i){
+function createLocationClass(i){
 
 switch (i) {
    case 1:
